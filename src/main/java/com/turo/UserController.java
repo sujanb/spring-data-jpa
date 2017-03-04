@@ -13,7 +13,7 @@ import java.util.List;
 @RequestMapping("/api/user")
 public class UserController {
 
-    private static final int PAGE_SIZE = 1;
+    private static final int PAGE_SIZE = 2;
     @Autowired
     private UserRepository userRepository;
 
@@ -25,8 +25,8 @@ public class UserController {
 
     @ResponseBody
     @RequestMapping("get/page/{page}")
-    public Page<User> getAll(final @PathVariable("page") Integer page, final @PathParam("sort") Sort sort) {
-        return userRepository.findAll(new PageRequest(page, PAGE_SIZE, sort));
+    public Page<User> getAll(final @PathVariable("page") Integer page, final @PathParam("sort") Sort.Direction sort) {
+        return userRepository.findAll(new PageRequest(page, PAGE_SIZE, sort, "id"));
     }
 
     @ResponseBody

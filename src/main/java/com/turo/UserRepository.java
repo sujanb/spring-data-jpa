@@ -1,10 +1,10 @@
 package com.turo;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface UserRepository extends CrudRepository<User, Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findByFirstName(String firstName);
 
@@ -12,5 +12,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
 
     List<User> findByFirstNameAndLastName(String firstName, String lastName);
 
-    List<User> findByAddress_Zipcode(String zipcode);
+    List<User> findByAddressZipcode(String zipcode);
 }
